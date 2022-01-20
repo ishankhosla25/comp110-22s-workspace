@@ -1,5 +1,3 @@
 """My first program for COMP110"""
-
-_author_ = "730245028"
-
+__author__ = "730245028"
 print("Hello, world.")
