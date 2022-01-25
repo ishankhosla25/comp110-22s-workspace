@@ -1,5 +1,4 @@
 """EXO1 - Chardle - A cute step toward Wordle."""
-
 __author__ = "730245028"
 
 """Variables:"""
