@@ -3,10 +3,13 @@
 __author__ = "730245028"
 
 """Variables."""
-secret: str = "secrets"
+secret: str = "python"
 wordlength: int = len(secret)
 guess: str = input(f"What is your {wordlength}-letter guess? ")
 i: int = 0
+otherspot: bool = False
+true: bool = True
+otherindex: int = 0
 WHITE_BOX: str = "\U00002B1C"
 GREEN_BOX: str = "\U0001F7E9"
 YELLOW_BOX: str = "\U0001F7E8"
@@ -20,13 +23,21 @@ if len(secret) == len(guess):
     while i < wordlength:
         if guess[i] == secret[i]:
             result = result + GREEN_BOX
-        else:        
-            result = result + WHITE_BOX
+        else:
+            while otherspot != true and otherindex < wordlength:
+                if guess[i] == secret[otherindex]:
+                    otherspot = not(otherspot)
+                    result = result + YELLOW_BOX
+                otherindex = otherindex + 1
+            if otherspot != true:
+                result = result + WHITE_BOX
+        otherindex = 0
+        otherspot = False            
         i = i + 1
-    
-    print(result)
 
-    if secret == guess: 
-        print("Woo! You got it!")
-    else:
-        print("Not quite. Play again soon!")
+print(result)
+
+if secret == guess: 
+    print("Woo! You got it!")
+else:
+    print("Not quite. Play again soon!")
