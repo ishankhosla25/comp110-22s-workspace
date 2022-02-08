@@ -1,6 +1,6 @@
 """Structured Wordle!"""
 
-__author__ = 730245028
+__author__ = "730245028"
 
 
 def contains_char(secret_word: str, chr_guess: str) -> bool:
@@ -15,8 +15,8 @@ def contains_char(secret_word: str, chr_guess: str) -> bool:
 
 
 def emojified(guess_word: str, secret_word: str) -> str:
-    assert len(guess_word) == len(secret_word)
     """Codifying green/white/yellow box."""
+    assert len(guess_word) == len(secret_word)
     i: int = 0
     WHITE_BOX: str = "\U00002B1C"
     GREEN_BOX: str = "\U0001F7E9"
@@ -39,8 +39,8 @@ def input_guess(expected_length: int) -> str:
     guess_word: str = input(f"Enter a {expected_length} character word: ")
     guess_length: int = len(guess_word)
     while expected_length != guess_length:
-        guess_word: str = input(f"That wasn't {expected_length} chars! Try again: ")
-        guess_length: int = len(guess_word)
+        guess_word = input(f"That wasn't {expected_length} chars! Try again: ")
+        guess_length = len(guess_word)
     return guess_word
 
 
