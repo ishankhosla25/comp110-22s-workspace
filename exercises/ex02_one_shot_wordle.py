@@ -3,7 +3,7 @@
 __author__ = "730245028"
 
 """Variables."""
-secret: str = "python"
+secret: str = "slimey"
 wordlength: int = len(secret)
 guess: str = input(f"What is your {wordlength}-letter guess? ")
 i: int = 0
