@@ -21,7 +21,7 @@ print(f"UNC has {schools['UNC']} students")
 schools.pop("Duke")
 
 # Testing for the existence of a key 
-print('Duke' in schools)
+print('UNC' in schools)
 
 # # Update / Reassign a key-value
 # schools['UNC'] = 20000
