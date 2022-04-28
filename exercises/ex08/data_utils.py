@@ -69,6 +69,7 @@ def concat(table_1: dict[str, list[str]], table_2: dict[str, list[str]]) -> dict
 
 
 def count(x: list[str]) -> dict[str, int]:
+    """Counts the frequencies of items."""
     result: dict[str, int] = {}
     i: int = 0
     while i < len(x):
@@ -81,6 +82,7 @@ def count(x: list[str]) -> dict[str, int]:
 
 
 def str_to_int(str_list: list[str]) -> list[int]:
+    """Converts a list of str to list of int."""
     result: list[int] = []
     i: int = 0
     while i < len(str_list):
@@ -90,6 +92,7 @@ def str_to_int(str_list: list[str]) -> list[int]:
 
 
 def mean(x: list[int]) -> float:
+    """Finds the average of a list of int."""
     result = sum(x) / len(x)
     return result
 
