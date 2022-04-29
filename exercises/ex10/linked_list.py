@@ -67,6 +67,8 @@ def max(head: Optional[Node]) -> int:
 
 
 def linkify(items: list[int]) -> Optional[Node]:
+    if len(items) == 0:
+        return None
     if len(items) == 1:
         head: Node = Node(items[0], None)
         return head
@@ -76,14 +78,15 @@ def linkify(items: list[int]) -> Optional[Node]:
 
 
 def scale(head: Optional[Node], factor: int) -> Optional[Node]:
-    if head is None:
+    result: Optional[Node] = head
+    if result is None:
         return None
-    if head.next is None:
-        head.data *= factor
+    if result.next is None:
+        result.data *= factor
     else:
-        head.data *= factor
-        head.next = scale(head.next, factor)
-    return head
+        result.data *= factor
+        result.next = scale(result.next, factor)
+    return result
 
 
 head: Node = Node(1, Node(2, Node(3, None)))
