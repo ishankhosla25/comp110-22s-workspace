@@ -38,7 +38,7 @@ class Simpy:
         self.step = step
         result: list[float] = []
         i: float = 0
-        while i < abs((stop / step) - abs(step)):
+        while i <= abs((stop / step) - abs(step)):
             result.append(start + (step * i))
             i += 1
         self.values = result
@@ -64,4 +64,71 @@ class Simpy:
                 i += 1
             return result
     
+    def __pow__(self, rhs: Union[float, Simpy]) -> Simpy:
+        """Operator overload of power!"""
+        result: Simpy = Simpy([])
+        if isinstance(rhs, float):
+            i: int = 0
+            while i < len(self.values):
+                result.values.append(self.values[i] ** rhs)
+                i += 1
+            return result
+        else:
+            i: int = 0
+            while i < len(self.values):
+                result.values.append(self.values[i] ** rhs.values[i])
+                i += 1
+            return result
     
+    def __eq__(self, rhs: Union[float, Simpy]) -> list[bool]:
+        """Testing if floats at certain indexes are equal."""
+        result: list[bool] = []
+        if isinstance(rhs, float):
+            i: int = 0
+            while i < len(self.values):
+                result.append(self.values[i] == rhs)
+                i += 1
+            return result
+        else:
+            i: int = 0
+            while i < len(self.values):
+                result.append(self.values[i] == rhs.values[i])
+                i += 1
+            return result
+    
+    def __gt__(self, rhs: Union[float, Simpy]) -> list[bool]:
+        """Tests if a float is greater than another at a certain index."""
+        result: list[bool] = []
+        if isinstance(rhs, float):
+            i: int = 0
+            while i < len(self.values):
+                result.append(self.values[i] > rhs)
+                i += 1
+            return result
+        else:
+            i: int = 0
+            while i < len(self.values):
+                result.append(self.values[i] > rhs.values[i])
+                i += 1
+            return result
+    
+    def __getitem__(self, rhs: Union[int, list[bool]]) -> Union[float, Simpy]:
+        """Ads subscription notation to a Simpy."""
+        if isinstance(rhs, int):
+            float_result: float = 0.0
+            float_result = self.values[rhs]
+            return float_result
+        else:
+            simpy_result: Simpy = Simpy([])
+            if rhs.__eq__(rhs):
+                i: int = 0
+                while i < len(self.values):
+                    simpy_result.values.append(self.values[i])
+                    i += 1
+            if rhs.__gt__(rhs):
+                i: int = 0
+                while i < len(self.values):
+                    simpy_result.values.append(self.values[i])
+                    i += 1
+            # if rhs.__eq__:
+            return simpy_result
