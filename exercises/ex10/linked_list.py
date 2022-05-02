@@ -56,6 +56,7 @@ def value_at(head: Optional[Node], index: int) -> int:
 
 
 def max(head: Optional[Node]) -> int:
+    """Finds the max data value."""
     if head is None:
         raise ValueError("last cannot be called with None")
     if head.next is None:
@@ -67,6 +68,7 @@ def max(head: Optional[Node]) -> int:
 
 
 def linkify(items: list[int]) -> Optional[Node]:
+    """Creates a linked list with the given values."""
     if len(items) == 0:
         return None
     if len(items) == 1:
@@ -78,15 +80,16 @@ def linkify(items: list[int]) -> Optional[Node]:
 
 
 def scale(head: Optional[Node], factor: int) -> Optional[Node]:
-    result: Optional[Node] = head
-    if result is None:
+    """Scales all the values by factor."""
+    new_result: Optional[Node] = head
+    if new_result is None:
         return None
-    if result.next is None:
-        result.data *= factor
+    if new_result.next is None:
+        new_result.data *= factor
     else:
-        result.data *= factor
-        result.next = scale(result.next, factor)
-    return result
+        new_result.data *= factor
+        new_result.next = scale(new_result.next, factor)
+    return new_result
 
 
 head: Node = Node(1, Node(2, Node(3, None)))
